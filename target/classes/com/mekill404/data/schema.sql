@@ -1,14 +1,14 @@
 CREATE TYPE Position AS ENUM (
     'GK',
     'DEF',
-    'MIDF'
+    'MIDF',
     'STR',
 )
 
 CREATE TYPE Continent AS ENUM (
     'AFRICA',
     'EUROPA',
-    'ASIA'
+    'ASIA',
     'AMERICA',
 )
 CREATE TABLE Team(
@@ -23,6 +23,6 @@ CREATE TABLE Player(
     age INT NOT NULL CHECK (age BETWEEN 15 AND 45),
     position Position NOT NULL DEFAULT 'GK',
     team_id INT NOT NULL,
-    CONSTRAINT fk_player_team FOREIGN KEY (id_team) REFERENCES Team(id) ON DELETE RESTRICT
-);
+    CONSTRAINT fk_player_team FOREIGN KEY (team_id) REFERENCES Team(id) ON DELETE RESTRICT
+)
 
