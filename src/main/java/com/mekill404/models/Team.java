@@ -6,41 +6,58 @@ import java.util.List;
 public class Team {
     private int id;
     private String name;
-    private ContinentEnum continent = ContinentEnum.AMERICA;
+    private ContinentEnum continent;
     private List<Player> players = new ArrayList<>();
-    
-    public Team(int id, String name, ContinentEnum continent, List<Player> players) {
+
+    public Team(int id, String name, ContinentEnum continent)
+    {
         this.id = id;
         this.name = name;
         this.continent = continent;
-        this.players = players;
     }
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
-    public String getName() {
+    
+    public String getName()
+    {
         return name;
     }
-    public void setName(String name) {
+    public void setName(String name) 
+    {
         this.name = name;
     }
-    public ContinentEnum getContinent() {
+    public ContinentEnum getContinent()
+    {
         return continent;
     }
-    public void setContinent(ContinentEnum continent) {
+    public void setContinent(ContinentEnum continent)
+    {
         this.continent = continent;
     }
-    public List<Player> getPlayers() {
+    
+    public void addPlayer(Player player)
+    {
+        this.players.add(player);
+    }
+    
+    public List<Player> getPlayers()
+    {
         return players;
     }
-    public void setPlayers(List<Player> players) {
+    
+    public void setPlayers(List<Player> players)
+    {
         this.players = players;
     }
 
-    public Integer getPlayersCount(){
-        return id;
+    public int getPlayersCount()
+    {
+        return this.players.size();
     }
 }
