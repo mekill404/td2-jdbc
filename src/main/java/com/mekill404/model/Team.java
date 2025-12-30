@@ -1,19 +1,20 @@
-package com.mekill404.models;
+package com.mekill404.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Team {
-    private int id;
+    private Integer id;
     private String name;
     private ContinentEnum continent;
-    private List<Player> players = new ArrayList<>();
+    private List<Player> players;
 
     public Team(int id, String name, ContinentEnum continent)
     {
         this.id = id;
         this.name = name;
         this.continent = continent;
+        this.players = new ArrayList<>();
     }
     public int getId()
     {
@@ -41,10 +42,6 @@ public class Team {
         this.continent = continent;
     }
     
-    public void addPlayer(Player player)
-    {
-        this.players.add(player);
-    }
     
     public List<Player> getPlayers()
     {
@@ -56,8 +53,16 @@ public class Team {
         this.players = players;
     }
 
+    public void addPlayer(Player player)
+    {
+        if (player != null) 
+        {
+            this.players.add(player);
+            
+        }
+    }
     public int getPlayersCount()
     {
-        return this.players.size();
+        return (players != null) ? players.size() : 0;
     }
 }

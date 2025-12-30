@@ -25,6 +25,10 @@ public class DBConnection {
         JDBC_URL = properties.getProperty("jdbc.url");
         USERNAME = properties.getProperty("jdbc.username");
         PASSWORD = properties.getProperty("jdbc.password");
+
+        if (JDBC_URL == null || USERNAME == null || PASSWORD == null) {
+            throw new RuntimeException("Erreur : Les variables d'environnement JDBC_URL, USERNAME ou PASSWORD ne sont pas définies !");
+        }
         try 
         {
             Class.forName(properties.getProperty("jdbc.driver.class"));

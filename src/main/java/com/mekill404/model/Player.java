@@ -1,4 +1,4 @@
-package com.mekill404.models;
+package com.mekill404.model;
 
 public class Player {
     private int id;
@@ -7,28 +7,34 @@ public class Player {
     private Team team;
 
     
-    public Player(int id, String name, PlayerPostionEnum position, Team team) {
+    public Player(int id, String name, PlayerPostionEnum position, Team team)
+    {
         this.id = id;
         this.name = name;
         this.position = position;
         this.team = team;
     }
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
     public String getName() {
         return name;
     }
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
-    public PlayerPostionEnum getPosition() {
+    public PlayerPostionEnum getPosition()
+    {
         return position;
     }
-    public void setPosition(PlayerPostionEnum position) {
+    public void setPosition(PlayerPostionEnum position)
+    {
         this.position = position;
     }
     public Team getTeam() 
@@ -42,6 +48,6 @@ public class Player {
     
     public String getTeamName()
     {
-        return name;   
+        return (team != null) ? team.getName() : "Sans club";    
     }
 }
