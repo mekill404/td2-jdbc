@@ -1,1 +1,6 @@
-*.properties
+
+conf.properties
+target/classes/com/mekill404/Main.class
+target/classes/com/mekill404/configuration/DBConnection.class
+target/classes/com/mekill404/models/PlayerPostionEnum.class
+target/classes/com/mekill404/models/Team.class
