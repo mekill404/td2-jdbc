@@ -131,8 +131,6 @@ public class DataRetriever
                 PreparedStatement psInsert = connection.prepareStatement(insertSql)
             ) {
                 for (Player player : newPlayers) {
-
-                    // validations
                     if (player.getName() == null || player.getName().isEmpty())
                         throw new RuntimeException("Impossible de créer un joueur sans nom");
                     if (player.getAge() < 15 || player.getAge() > 45)
@@ -140,7 +138,6 @@ public class DataRetriever
                     if (player.getPosition() == null)
                         throw new RuntimeException("Position du joueur non définie");
 
-                    // vérification doublons
                     psCheck.setString(1, player.getName());
                     try (ResultSet rs = psCheck.executeQuery()) {
                         rs.next();
@@ -148,8 +145,6 @@ public class DataRetriever
                             throw new RuntimeException("Joueur déjà existant : " + player.getName());
                         }
                     }
-
-                    // insertion
                     psInsert.setString(1, player.getName());
                     psInsert.setInt(2, player.getAge());
                     psInsert.setObject(3, player.getPosition().name(), java.sql.Types.OTHER);
