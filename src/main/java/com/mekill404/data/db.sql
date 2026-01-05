@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS mini_football_db;
 CREATE DATABASE mini_football_db;
 
-CREATE USER mini_football_db_manager WITH PASSWORD 'miniFootBall123';
+CREATE USER mini_football_db_manager WITH PASSWORD 'mahery';
 
 \connect mini_football_db;
 

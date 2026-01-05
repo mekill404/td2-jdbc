@@ -65,4 +65,27 @@ public class Team {
     {
         return (players != null) ? players.size() : 0;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Team :\n");
+        sb.append("- id        : ").append(id).append("\n");
+        sb.append("- name      : ").append(name).append("\n");
+        sb.append("- continent : ").append(continent).append("\n");
+        sb.append("- players   :\n");
+
+        if (players == null || players.isEmpty()) {
+            sb.append("    (Aucun joueur)\n");
+        } else {
+            for (Player player : players) {
+                sb.append("    * ").append(player).append("\n");
+            }
+        }
+
+        return sb.toString();
+    }
+
+
 }
