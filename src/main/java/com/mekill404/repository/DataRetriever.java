@@ -13,44 +13,81 @@ import com.mekill404.model.Team;
 public class DataRetriever {
     private final DBConnection dbConnection;
 
-    public DataRetriever(DBConnection dbConnection) {
+    public DataRetriever(DBConnection dbConnection)
+    {
         this.dbConnection = dbConnection;
     }
 
- public Team findTeamById(Integer id) {
-        String sql = """
-            SELECT t.id AS team_id, t.name AS team_name, t.continent,
-                   p.id AS player_id, p.name AS player_name, p.position, p.goal_nb
-            FROM team t
-            LEFT JOIN player p ON p.id_team = t.id
-            WHERE t.id = ?
-        """;
+    public Team findTeamById(Integer id)
+    {
+        String sql = "SELECT t.id AS team_id, t.name AS team_name, t.continent, " +
+                    "p.id AS player_id, p.name AS player_name, p.position, p.goal_nb " +
+                    "FROM team t " +
+                    "LEFT JOIN player p ON p.id_team = t.id " +
+                    "WHERE t.id = ?";
 
-        try (Connection connection = dbConnection.getDBConnection();
-             PreparedStatement ps = connection.prepareStatement(sql)) {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try
+        {
+            connection = dbConnection.getDBConnection();
+            ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
-            try (ResultSet rs = ps.executeQuery()) {
-                Team team = null;
-                while (rs.next()) {
-                    if (team == null) {
-                        team = new Team(rs.getInt("team_id"), rs.getString("team_name"),
-                            ContinentEnum.valueOf(rs.getString("continent")));
-                    }
-                    if (rs.getInt("player_id") != 0) {
-                        Player player = new Player(rs.getInt("player_id"), rs.getString("player_name"),
-                        PlayerPostionEnum.valueOf(rs.getString("position")), team);
-                        int g = rs.getInt("goal_nb");
-                        if (rs.wasNull()) {
-                            player.setGoalNb(null);
-                        } else {
-                            player.setGoalNb(g);
-                        }
-                        team.addPlayer(player);
-                    }
+            
+            rs = ps.executeQuery();
+            Team team = null;
+
+            while (rs.next())
+            {
+                
+                if (team == null) {
+                    int teamId = rs.getInt("team_id");
+                    String teamName = rs.getString("team_name");
+                    String continentStr = rs.getString("continent");
+                    
+                    ContinentEnum continent = ContinentEnum.valueOf(continentStr);
+                    team = new Team(teamId, teamName, continent);
                 }
-                return team;
+
+                int playerId = rs.getInt("player_id");
+                if (playerId != 0) {
+                    String playerName = rs.getString("player_name");
+                    String posStr = rs.getString("position");
+                    PlayerPostionEnum position = PlayerPostionEnum.valueOf(posStr);
+
+                    Player player = new Player(playerId, playerName, position, team);
+
+                    int goals = rs.getInt("goal_nb");
+                    
+                    if (rs.wasNull()) {
+                        player.setGoalNb(null);
+                    } else {
+                        player.setGoalNb(goals);
+                    }
+
+                    team.addPlayer(player);
+                }
             }
-        } catch (SQLException e) { throw new RuntimeException(e); }
+            return team;
+
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+            return null;
+        } finally
+        {
+            try
+            {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
 
     public List<Player> findPlayers(int page, int size) {
