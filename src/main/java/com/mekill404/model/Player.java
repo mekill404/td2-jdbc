@@ -6,8 +6,8 @@ public class Player {
     private int age;
     private PlayerPostionEnum position = PlayerPostionEnum.GK;
     private Team team;
+    private Integer goalNb;
 
-    
     public Player(int id, String name, PlayerPostionEnum position, Team team)
     {
         this.id = id;
@@ -15,6 +15,7 @@ public class Player {
         this.position = position;
         this.team = team;
     }
+
     public Player(int id, String name, int age, PlayerPostionEnum position, Team team)
     {
         this.id = id;
@@ -22,8 +23,26 @@ public class Player {
         this.age = age;
         this.position = position;
         this.team = team;
+        this.goalNb = null; 
     }
 
+    public Player(int id, String name, int age, PlayerPostionEnum position, Team team, Integer goalNb)
+    {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.position = position;
+        this.team = team;
+        this.goalNb = goalNb;
+    }
+    public Integer getGoalNb()
+    { 
+        return goalNb;
+    }
+    public void setGoalNb(Integer goalNb)
+    { 
+        this.goalNb = goalNb;
+    }
     public int getId()
     {
         return id;
@@ -74,5 +93,7 @@ public class Player {
     public void setAge(int age) {
         this.age = age;
     }
+
+
 
 }

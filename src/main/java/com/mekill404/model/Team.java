@@ -87,5 +87,15 @@ public class Team {
         return sb.toString();
     }
 
-
+    public Integer getPlayersGoals() {
+        int total = 0;
+        for (Player p : players) {
+            if (p.getGoalNb() == null) {
+                throw new RuntimeException("Erreur : Le nombre de buts du joueur " 
+                    + p.getName() + " est inconnu. Calcul impossible pour l'équipe.");
+            }
+            total += p.getGoalNb();
+        }
+        return total;
+    }
 }
