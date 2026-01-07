@@ -15,7 +15,8 @@ public class Player {
         this.position = position;
         this.team = team;
     }
-    public Player(int id, String name, int age, PlayerPostionEnum position, Team team) {
+    public Player(int id, String name, int age, PlayerPostionEnum position, Team team)
+    {
         this.id = id;
         this.name = name;
         this.age = age;

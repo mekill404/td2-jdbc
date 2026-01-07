@@ -16,6 +16,7 @@ import com.mekill404.model.Team;
 public class DataRetriever 
 {
     private final DBConnection dbConnection;
+
     public DataRetriever(DBConnection dbConnection)
     {
         this.dbConnection = dbConnection;
@@ -38,24 +39,25 @@ public class DataRetriever
         try (
             Connection connection = dbConnection.getDBConnection();
             PreparedStatement ps = connection.prepareStatement(sql)
-        ) {
+        )
+        {
             ps.setInt(1, id);
-
-            try (ResultSet rs = ps.executeQuery()) {
-
+            try (ResultSet rs = ps.executeQuery())
+            {
                 Team team = null;
 
-                while (rs.next()) {
-
-                    if (team == null) {
+                while (rs.next())
+                {
+                    if (team == null)
+                    {
                         team = new Team(
                             rs.getInt("team_id"),
                             rs.getString("team_name"),
                             ContinentEnum.valueOf(rs.getString("continent"))
                         );
                     }
-
-                    if (rs.getInt("player_id") != 0) {
+                    if (rs.getInt("player_id") != 0)
+                    {
                         Player player = new Player(
                             rs.getInt("player_id"),
                             rs.getString("player_name"),
@@ -65,11 +67,11 @@ public class DataRetriever
                         team.addPlayer(player);
                     }
                 }
-
                 return team;
             }
-
-        } catch (SQLException e) {
+        }
+        catch (SQLException e)
+        {
             throw new RuntimeException("Erreur lors de la récupération de l'équipe " + id, e);
         }
     }
@@ -121,7 +123,7 @@ public class DataRetriever
     public List<Player> createPlayers(List<Player> newPlayers) 
     {
         String checkSql = "SELECT COUNT(*) FROM player WHERE name = ?";
-        String insertSql = "INSERT INTO player(name, age, \"position\", id_team) VALUES (?, ?, ?::position, ?)";
+        String insertSql = "INSERT INTO player(name, age, \"position\", id_team) VALUES (?, ?, ?::\"Position\", ?)";
 
         try (Connection connection = dbConnection.getDBConnection()) {
             connection.setAutoCommit(false);
@@ -164,6 +166,7 @@ public class DataRetriever
             throw new RuntimeException("Erreur création joueurs (transaction annulée)", e);
         }
     }
+
 
     public Team saveTeam(Team team) 
     {
