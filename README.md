@@ -61,7 +61,8 @@ Il met en œuvre des fonctionnalités essentielles telles que :<br>
 - `List<Player> createPlayers(List<Player> newPlayers)` =>Insertion atomique de joueurs 
 - `Team saveTeam(Team teamToSave)`                      =>Sauvegarde ou mise à jour d’une équipe 
 - `List<Team> findTeamsByPlayerName(String playerName)` => Recherche d’équipes par nom de joueur 
-- `List<Player> findPlayersByCriteria(...)`             => Recherche multi-critères avec pagination 
+- `List<Player> findPlayersByCriteria(...)`             => Recherche multi-critères avec pagination
+![image des clubs](image-1.png)
 --- 
 ## ✅ Tests attendus 
 | Méthode                                                      | Paramètres        | Résultat attendu                          | 
