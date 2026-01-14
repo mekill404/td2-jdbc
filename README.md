@@ -1,8 +1,8 @@
-# ⚽ Exercice TD2 : Java & PostgreSQL (JDBC)
-**Sujet :** Filtre, pagination et insertion de données 
-**Groupe :** K3
-**References:** STD24186
-**Formulaire de dépôt :** [Lien Google Form](https://forms.gle/d2xfTimCCQicZkwx8)
+# ⚽ Exercice TD2 : Java & PostgreSQL (JDBC)<br>
+**Sujet :** Filtre, pagination et insertion de données<br>
+**Groupe :** K3<br>
+**References:** STD24186<br>
+**Formulaire de dépôt :** [Lien Google Form](https://forms.gle/d2xfTimCCQicZkwx8)<br>
 ---
 ## Description:<br>
 ![image de java et psql](image.png)
@@ -14,17 +14,17 @@ Il met en œuvre des fonctionnalités essentielles telles que :<br>
 - Filtrage et recherche multi-critères <br>
 - Pagination des résultats <br>
 - Respect du principe d’atomicité lors des insertions<br>
---
+---
 ## Objectifs:
 * Réussir à connecter une base de données PostgreSQL avec Java en utilisant JDBC.<br>
 * ​Comprendre comment doit être exploitée les données d’une base de données avec Java (ou tout autre langage orienté objet)<br>
 * ​Réussir à implémenter la pagination et les recherches multi-critères.<br>
---
+---
 ## 🚀 Technologies utilisées 
 | Langage                                                      | Base de données              | 
 |--------------------------------------------------------------|------------------------------| 
 | Java (JDBC)                                                  | PostgreSQL                   |
-| SQL                                                          | —                            |  
+| SQL                                                          | —                            |
 ---
 ## 🗂️ Schéma de la base de données 
 ### Table **Player** 
