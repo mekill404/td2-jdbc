@@ -1,5 +1,6 @@
 # td2-jdbc: gestion de club avec jdbc (java)
 * Descriptions:<br>
+![image de java et psql](image.png)
 
 * Objectifs:
     * Connecté un base de donnée avec java en utilisant jdbc<br>
