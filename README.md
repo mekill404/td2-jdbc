@@ -81,4 +81,6 @@ Il met en œuvre des fonctionnalités essentielles telles que :<br>
 - Utiliser **PreparedStatement** pour éviter les injections SQL. 
 - Respecter le principe d’**atomicité** : soit toutes les insertions réussissent, soit aucune. 
 - Les variables de connexion doivent être stockées dans l’environnement (`System.getenv`). 
---- ## 👥 Auteurs Projet réalisé par **mekill404** dans le cadre du TD2 de Java & PostgreSQL.
+--- 
+## 👥 Auteurs Projet 
+réalisé par **mekill404** dans le cadre du TD2 de Java & PostgreSQL.
