@@ -50,20 +50,20 @@ public class DataRetriever {
                     ContinentEnum continent = ContinentEnum.valueOf(continentStr);
                     team = new Team(teamId, teamName, continent);
                 }
-
                 int playerId = rs.getInt("player_id");
-                if (playerId != 0) {
+                if (playerId != 0)
+                {
                     String playerName = rs.getString("player_name");
                     String posStr = rs.getString("position");
                     PlayerPostionEnum position = PlayerPostionEnum.valueOf(posStr);
-
                     Player player = new Player(playerId, playerName, position, team);
-
                     int goals = rs.getInt("goal_nb");
                     
-                    if (rs.wasNull()) {
+                    if (rs.wasNull())
+                    {
                         player.setGoalNb(null);
-                    } else {
+                    } else
+                    {
                         player.setGoalNb(goals);
                     }
 
